@@ -72,17 +72,17 @@ The core idea is:
 
 > **If two tracks frequently appear together in playlists, they are similar.**
 
-For a track ( t ), define:
+For a track **( t )**, define:
 
-* ( P(t) ): the set of playlists containing ( t )
+* **( P(t) )**: the set of playlists that contain track ( t )
 
-The similarity between two tracks ( t_1 ) and ( t_2 ) is computed using **cosine similarity**:
+The similarity between two tracks **( t_1 )** and **( t_2 )** is computed using **cosine similarity**:
 
-[
+```math
 \text{sim}(t_1, t_2) =
 \frac{|P(t_1) \cap P(t_2)|}
 {\sqrt{|P(t_1)| \cdot |P(t_2)|}}
-]
+```
 
 This produces a similarity score in ([0,1]).
 
@@ -101,23 +101,25 @@ This results in a fast and reusable `track_sim_fast` function.
 
 ### Playlist Similarity Based on Tracks
 
-To compute similarity between two playlists based on their tracks:
+To compute the similarity between two playlists based on their tracks:
 
-1. For each track in playlist ( P_1 ), compute its similarity with **all tracks** in playlist ( P_2 )
-2. Average those similarities to obtain a per-track score
-3. Average across all tracks in ( P_1 )
+1. For each track in playlist **( P_1 )**, compute its similarity with **all tracks** in playlist **( P_2 )**.
+2. Average these similarities to obtain a **per-track similarity score**.
+3. Average the per-track scores across all tracks in **( P_1 )**.
 
-Formally:
+Formally, the similarity between two playlists is defined as:
 
-[
-\text{SIM}(P_1, P_2) =
+```math
+SIM(P_1, P_2) =
 \frac{1}{|P_1|}
 \sum_{t \in P_1}
 \left(
 \frac{1}{|P_2|}
 \sum_{s \in P_2} \text{sim}(t, s)
 \right)
-]
+```
+
+---
 
 #### Implementation Details
 
