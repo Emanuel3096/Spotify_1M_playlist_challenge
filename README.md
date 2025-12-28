@@ -25,6 +25,13 @@ The algorithm was carried out in the spirit of the Computing Foundations of Data
 
 ---
 
+## 📁 Project Structure
+
+- `main_script.py`  
+  Main execution script fully comented. Full pipeline implemented.
+
+---
+
 ## 🛠️ Technologies & Libraries
 
 * **Python**
